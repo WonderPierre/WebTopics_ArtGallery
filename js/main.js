@@ -31,10 +31,10 @@ document.body.appendChild(lader);
 
 let geladenAfbeeldingen = 0;
 const totaalQueries = 2;
-const verwachtAantalAfbeeldingen = 6; 
+const verwachtAantalAfbeeldingen = 6;
 let afgerondeQueries = 0;
 
-const worker = new Worker('/js/schilderijen-worker.js');
+const worker = new Worker("./js/schilderijen-worker.js");
 
 function haalSchilderijenOp(query, id) {
   return new Promise((resolve, reject) => {
@@ -42,14 +42,15 @@ function haalSchilderijenOp(query, id) {
   });
 }
 
-worker.onmessage = function(e) {
+worker.onmessage = function (e) {
   const { id, data, error } = e.data;
   let schilderijenLijst = document.getElementById(id);
   let afbeeldingBeloftes = [];
 
   if (error) {
     console.error("fout:", error);
-    schilderijenLijst.innerHTML = "<li>Er ging iets mis bij het ophalen van de schilderijen.</li>";
+    schilderijenLijst.innerHTML =
+      "<li>Er ging iets mis bij het ophalen van de schilderijen.</li>";
     afgerondeQueries++;
     zijnAlleAfbeeldingenGeladen();
     return;
@@ -80,18 +81,20 @@ worker.onmessage = function(e) {
       }
     });
 
-    afbeeldingBeloftes.push(new Promise((imgResolve) => {
-      img.onload = () => {
-        geladenAfbeeldingen++;
-        console.log(`Afbeelding geladen. Totaal: ${geladenAfbeeldingen}`);
-        imgResolve();
-      };
-      img.onerror = () => {
-        console.error(`Fout bij het laden van afbeelding: ${img.src}`);
-        geladenAfbeeldingen++;
-        imgResolve();
-      };
-    }));
+    afbeeldingBeloftes.push(
+      new Promise((imgResolve) => {
+        img.onload = () => {
+          geladenAfbeeldingen++;
+          console.log(`Afbeelding geladen. Totaal: ${geladenAfbeeldingen}`);
+          imgResolve();
+        };
+        img.onerror = () => {
+          console.error(`Fout bij het laden van afbeelding: ${img.src}`);
+          geladenAfbeeldingen++;
+          imgResolve();
+        };
+      })
+    );
   });
 
   Promise.all(afbeeldingBeloftes).then(() => {
@@ -101,16 +104,23 @@ worker.onmessage = function(e) {
 };
 
 function zijnAlleAfbeeldingenGeladen() {
-  console.log(`Afgeronde queries: ${afgerondeQueries}, Geladen afbeeldingen: ${geladenAfbeeldingen}`);
-  if (afgerondeQueries === totaalQueries && geladenAfbeeldingen === verwachtAantalAfbeeldingen) {
+  console.log(
+    `Afgeronde queries: ${afgerondeQueries}, Geladen afbeeldingen: ${geladenAfbeeldingen}`
+  );
+  if (
+    afgerondeQueries === totaalQueries &&
+    geladenAfbeeldingen === verwachtAantalAfbeeldingen
+  ) {
     console.log("Alle afbeeldingen zijn geladen, laadcirkel wordt verwijderd");
     if (lader && lader.parentNode) {
       lader.remove();
     }
 
-    document.querySelectorAll("#schilderijenGogh li, #schilderijen li").forEach(item => {
-      item.classList.remove("verborgen");
-    });
+    document
+      .querySelectorAll("#schilderijenGogh li, #schilderijen li")
+      .forEach((item) => {
+        item.classList.remove("verborgen");
+      });
 
     gsap.fromTo(
       "#schilderijenGogh img, #schilderijen img",
