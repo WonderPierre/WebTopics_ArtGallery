@@ -34,7 +34,7 @@ const totaalQueries = 2;
 const verwachtAantalAfbeeldingen = 6;
 let afgerondeQueries = 0;
 
-const worker = new Worker("/WebTopics_ArtGallery/js/schilderijen-worker.js");
+const worker = new Worker("./WebTopics_ArtGallery/js/schilderijen-worker.js");
 
 function haalSchilderijenOp(query, id) {
   return new Promise((resolve, reject) => {
