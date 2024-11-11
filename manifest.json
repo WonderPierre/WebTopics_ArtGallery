@@ -1,0 +1,12 @@
+{
+    "name": "PWA Gallerij",
+    "short_name": "PWA",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#FFE9D2",
+    "theme_color": "#FFE1C4",
+    "description": "pwa kunstgallerij",
+    "icons": [
+        {"src":"img/cat.png","sizes": "192x155","type": "image/png"}
+    ]
+}

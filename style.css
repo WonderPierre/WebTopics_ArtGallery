@@ -1,0 +1,117 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    margin: 1.5em 0;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2em;
+    padding: 1em;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+    transition: .3s ease-out;
+    text-align: center;
+    align-items: center;
+}
+
+li img {
+    border: 0.5em solid black;
+}
+
+ul li:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.verborgen {
+    display: none;
+}
+
+#laad-ding {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.draai-cirkel {
+    border: 5px solid #f3f3f3; 
+    border-top: 5px solid #3498db; 
+    border-radius: 50%;
+    width: 3.125em; 
+    height: 3.125em; 
+    animation: rondje 1s linear infinite;
+}
+
+@keyframes rondje {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.schilderwerken {
+    display: flex;
+    flex-direction: column;
+    gap: 2em; 
+}
+
+#schilderijen {
+    margin-bottom: 2em; 
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2em; 
+        margin-bottom: 1em; 
+    }
+
+    ul {
+        gap: 1em; 
+        padding-left: .5em; 
+        padding-right:.5em; 
+   }
+
+   li {
+       max-width: 90%; 
+   }
+}
+
+@media screen and (max-width: 480px) {
+   h1 {
+       font-size: 1.5em; 
+   }
+
+   ul {
+       flex-direction: column; 
+       align-items: center; 
+   }
+
+   li {
+       max-width: none; 
+   }
+
+   li img {
+       border-width: .2em; 
+   }
+}
