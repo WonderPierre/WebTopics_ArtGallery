@@ -34,7 +34,7 @@ const totaalQueries = 2;
 const verwachtAantalAfbeeldingen = 6;
 let afgerondeQueries = 0;
 
-const worker = new Worker("https://wonderpierre.github.io/WebTopics_ArtGallery/js/schilderijen-worker.js");
+const worker = new Worker("js/schilderijen-worker.js");
 
 function haalSchilderijenOp(query, id) {
   return new Promise((resolve, reject) => {
@@ -77,7 +77,7 @@ worker.onmessage = function (e) {
 
     item.addEventListener("click", () => {
       if (img.alt === "Young Man with Cornflower") {
-        window.location.href = "../youngPeasant/index.html";
+        window.location.href = "../cornflower/index.html";
       }
     });
 
