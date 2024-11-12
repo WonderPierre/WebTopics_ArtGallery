@@ -10,15 +10,31 @@ init();
 animate();
 
 function init() {
-  // Set up the full page styles for the body and html
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+    const title = document.createElement("h1");
+    title.innerText = "Young boy with cornflower";
+    title.style.position = "absolute";
+    title.style.top = "10px";
+    title.style.left = "50%";
+    title.style.transform = "translateX(-50%)";
+    title.style.fontSize = "24px";
+    title.style.color = "black";
+    title.style.backgroundColor = "white";
+    title.style.padding = "10px";
+    title.style.borderRadius = "8px";
+    title.style.zIndex = "10";
+
+
+    header.appendChild(title);
+
   document.documentElement.style.margin = 0;
   document.documentElement.style.padding = 0;
   document.body.style.margin = 0;
   document.body.style.padding = 0;
-  document.body.style.height = '100vh';  // Full height for body
-  document.body.style.overflow = 'hidden'; // Hide scrollbars
+  document.body.style.height = '100vh'; 
+  document.body.style.overflow = 'hidden';
 
-  // Create a container to hold the AR elements
   container = document.createElement("div");
   document.body.appendChild(container);
 
@@ -47,7 +63,7 @@ function init() {
 
   addReticleToScene();
 
-  // Create an image element for the painting and append it to the body
+  
   const imageElement = document.createElement("img");
   imageElement.src = paintingImageURL;
   imageElement.alt = "Van Gogh Painting";
@@ -57,7 +73,7 @@ function init() {
   imageElement.style.transform = "translateX(-50%)";
   imageElement.style.maxWidth = "80%";
   imageElement.style.zIndex = "10";
-  document.body.appendChild(imageElement);
+  main.appendChild(imageElement);
   imageElement.style.display ='none';
   setTimeout(() => {
     imageElement.style.display = 'block';
@@ -69,7 +85,8 @@ function init() {
     requiredFeatures: ["hit-test"]
   });
   button.style.backgroundColor = 'black';
-  document.body.appendChild(button);
+  button.style.opacity = 1;
+  main.appendChild(button);
   renderer.domElement.style.display = "none"; // Hide WebGL renderer initially
 
   const homeButton = document.createElement("button");
@@ -91,7 +108,7 @@ function init() {
     window.location.href = "../";  // Redirect to the home page (use your home page URL here)
   });
 
-  document.body.appendChild(homeButton);
+  main.appendChild(homeButton);
 
   window.addEventListener("resize", onWindowResize, false);
 }

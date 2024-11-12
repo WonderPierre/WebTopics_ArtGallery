@@ -26,7 +26,7 @@ LIMIT 3
 // Laad-cirkel
 const lader = document.createElement("div");
 lader.id = "laad-ding";
-lader.innerHTML = '<div class="draai-cirkel"></div><p>Even geduld...</p>';
+lader.innerHTML = '<aside><div class="draai-cirkel"></div><p>Even geduld...</p></aside>';
 document.body.appendChild(lader);
 
 let geladenAfbeeldingen = 0;
@@ -62,7 +62,7 @@ worker.onmessage = function (e) {
 
     const img = document.createElement("img");
     img.src = resultaat.img.value;
-    img.alt = resultaat.schilderijLabel.value;
+    img.alt = resultaat.schilderijLabel.value + ".";
     img.style.maxWidth = "20rem";
     img.style.opacity = "0";
 
@@ -76,8 +76,8 @@ worker.onmessage = function (e) {
     schilderijenLijst.appendChild(item);
 
     item.addEventListener("click", () => {
-      if (img.alt === "Young Man with Cornflower") {
-        window.location.href = "./cornflower/index.html";
+      if (img.alt === "Young Man with Cornflower.") {
+        window.location.href = "./cornflower/";
       }
     });
 

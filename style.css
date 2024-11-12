@@ -49,13 +49,32 @@ ul li:hover {
     display: none;
 }
 
-#laad-ding {
+aside {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
+canvas{
+    display: none;
+}
+button{
+    position: absolute;
+    top: 5rem;
+    right: 10rem;
+    background-color: black;
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    scale: 1.2;
+    transition: .3s ease-in-out;
+}
+button:hover{
+    cursor: pointer;
+    scale: 1.4;
+    
+}
 .draai-cirkel {
     border: 5px solid #f3f3f3; 
     border-top: 5px solid #3498db; 

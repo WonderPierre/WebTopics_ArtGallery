@@ -8,11 +8,12 @@ const assets = [
     './style.css',
     './js/main.js',
     './js/schilderijen-worker.js',
-    './youngPeasant/js/lottieFile.js',
-    './youngPeasant/js/main.js',
-    './youngPeasant/index.html',
-    './youngPeasant/style.css',
-    './offline.html'
+    './js/sound.js',
+    './sound/Fredagain.._BoilerRoom_London.mp3',
+    './cornflower/js/lottieFile.js',
+    './cornflower/js/main.js',
+    './cornflower/index.html',
+    './cornflower/style.css',
 ];
 
 // Installatie van de service worker en vooraf cachen van essentiële assets
