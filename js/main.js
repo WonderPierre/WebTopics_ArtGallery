@@ -77,7 +77,7 @@ worker.onmessage = function (e) {
 
     item.addEventListener("click", () => {
       if (img.alt === "Young Man with Cornflower") {
-        window.location.href = "cornflower/index.html";
+        window.location.href = "./cornflower/index.html";
       }
     });
 
