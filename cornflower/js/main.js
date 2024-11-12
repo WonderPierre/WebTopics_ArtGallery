@@ -94,9 +94,6 @@ function init() {
   document.body.appendChild(homeButton);
 
   window.addEventListener("resize", onWindowResize, false);
-
-  // Fetch the painting image dynamically from Wikidata
-  fetchPaintingImage();
 }
 
 
