@@ -61,7 +61,7 @@ canvas{
 }
 button{
     position: absolute;
-    top: 6rem;
+    top: 5rem;
     right: 10rem;
     background-color: black;
     color: white;
@@ -114,6 +114,9 @@ button:hover{
    li {
        max-width: 90%; 
    }
+    button {
+        top: 6rem;
+    }
 }
 
 @media screen and (max-width: 480px) {
